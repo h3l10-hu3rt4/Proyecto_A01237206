@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     class Unidad {
         - vida : int
