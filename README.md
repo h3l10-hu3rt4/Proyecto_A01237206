@@ -1,25 +1,23 @@
-# Ejercicios - Básicos
-
-Ubíquese en la **carpeta fuente del proyecto** deseado, use:
-
-```
-cd <assignments/NombreCarpeta>
-
-Ej.- cd assignments/Proyecto
-
-```
-Regresar a una **carpeta anterior**, use:
-
-```
-Ej.- cd ../
-
-```
-
-Regrese a la **carpeta fuente inical, como está cuando cargas el codespace**, use:
-
-```
-Ej.- cd ../../
-
-```
-
-
+classDiagram
+    class Unidad {
+        - vida : int
+        - salud : int
+        - ataque : int
+        - nivel : int
+        + Unidad()
+        + Unidad(int _vida, int _ataque, int _nivel)
+        + getVida() : int
+        + setVida(int _vida) : void
+        + getSalud() : int
+        + setSalud(int _salud) : void
+        + getAtaque() : int
+        + setAtaque(int _ataque) : void
+        + getNivel() : int
+        + setNivel(int _nivel) : void
+        + porcentajeSalud() : int
+        + imprimeBarra() : void
+        + calculaAtaque(Unidad objetivo) : int
+        + recibeAtaque(int ptosAtaque) : void
+        + atacar(Unidad objetivo) : void
+        + imprimir() : void
+    }
