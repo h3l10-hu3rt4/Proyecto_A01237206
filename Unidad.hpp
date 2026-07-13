@@ -9,10 +9,10 @@ private:
     int nivel;
 
 public:
-    // Constructores
+    // Constructores y Destructor
     Unidad();
     Unidad(int _vida, int _ataque, int _nivel);
-
+    virtual ~Unidad() = default;
     // Getters y Setters
     int getVida() const;
     void setVida(int _vida);
@@ -29,10 +29,14 @@ public:
     // Combate y visualización
     int porcentajeSalud();
     void imprimeBarra();
-    int calculaAtaque(Unidad& objetivo);
-    void recibeAtaque(int ptosAtaque);
-    void atacar(Unidad& objetivo);
-    void imprimir();
+    
+    // Métodos virtuales que serán sobreescritos (redefinidos) por las clases hijas
+    virtual int calculaAtaque(Unidad& objetivo);
+    virtual void recibeAtaque(int ptosAtaque);
+    virtual void imprimir();
+    
+    // Este método se queda normal porque su lógica consiste en mandar a llamar a calculaAtaque y recibeAtaque
+    void atacar(Unidad& objetivo); 
 };
 
 #endif

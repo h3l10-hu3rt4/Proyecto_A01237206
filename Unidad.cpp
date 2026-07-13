@@ -1,6 +1,6 @@
 #include "Unidad.hpp"
 #include <iostream>
-#include <cstdlib> // Necesario para rand()
+#include <cstdlib> // Para rand()
 
 // 2. Constructores
 Unidad::Unidad() {
