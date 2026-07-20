@@ -34,6 +34,21 @@ void Arquero::recibeAtaque(int ptosAtaque) {
     } else {
         Unidad::recibeAtaque(ptosAtaque);
     }
+    
+    // Validar si murió para intentar revivir
+    if (getSalud() <= 0) {
+        revive();
+    }
+}
+
+void Arquero::revive() {
+    if (precision >= 40) {
+        std::cout << "\n [!] El Arquero fingio su muerte y reaparece usando una bomba de humo! (-40 Precision)\n";
+        setSalud(getVida() / 2); // Revive con la mitad de la vida total
+        precision -= 40;         // Consume la precision
+    } else {
+        std::cout << "\n [X] El Arquero ha MUERTO. No pudo esquivar el golpe letal.\n";
+    }
 }
 
 void Arquero::imprimir() {

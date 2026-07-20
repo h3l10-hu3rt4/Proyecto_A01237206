@@ -17,7 +17,7 @@ int Mago::calculaAtaque(Unidad& objetivo) {
     if (mana >= 20) {
         mana -= 20;
         int ataqueMagico = ataqueBase * 2;
-        std::cout << " [Mago] conjura un hechizo poderoso! -" << 20 << " Mana (" << ataqueMagico << " pts de dano)!\n";
+        std::cout << " [Mago] conjura un hechizo poderoso! -20 Mana (" << ataqueMagico << " pts de dano)!\n";
         return ataqueMagico;
     } else {
         mana += 10;
@@ -31,10 +31,25 @@ void Mago::recibeAtaque(int ptosAtaque) {
     if (getNivel() > 2 && mana >= 10) {
         mana -= 10;
         int danoReducido = ptosAtaque * 0.7; // Absorbe 30%
-        std::cout << " [Mago] activa Escudo de Mana! -" << 10 << " Mana. Absorbe parte del impacto.\n";
+        std::cout << " [Mago] activa Escudo de Mana! -10 Mana. Absorbe parte del impacto.\n";
         Unidad::recibeAtaque(danoReducido);
     } else {
         Unidad::recibeAtaque(ptosAtaque);
+    }
+    
+    // Validar si murió para intentar revivir
+    if (getSalud() <= 0) {
+        revive();
+    }
+}
+
+void Mago::revive() {
+    if (mana >= 40) {
+        std::cout << "\n [!] El Mago ha caido... PERO REVIVE USANDO SU MAGIA! (-40 Mana)\n";
+        setSalud(getVida() / 2); // Revive con la mitad de la vida total
+        mana -= 40;              // Consume el mana
+    } else {
+        std::cout << "\n [X] El Mago ha MUERTO definitivamente. No tiene mana suficiente para revivir.\n";
     }
 }
 

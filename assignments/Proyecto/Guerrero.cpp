@@ -25,6 +25,21 @@ void Guerrero::recibeAtaque(int ptosAtaque) {
     
     std::cout << " [Guerrero] usa su armadura para mitigar " << mitigacion << " pts de dano.\n";
     Unidad::recibeAtaque(danoFinal);
+    
+    // Validar si murió para intentar revivir
+    if (getSalud() <= 0) {
+        revive();
+    }
+}
+
+void Guerrero::revive() {
+    if (fuerza >= 30) {
+        std::cout << "\n [!] El Guerrero se niega a morir por pura Fuerza de Voluntad! (-30 Fuerza)\n";
+        setSalud(getVida() / 2); // Revive con la mitad de la vida total
+        fuerza -= 30;            // Consume la fuerza
+    } else {
+        std::cout << "\n [X] El Guerrero ha MUERTO en combate. Su fuerza se ha agotado.\n";
+    }
 }
 
 void Guerrero::imprimir() {

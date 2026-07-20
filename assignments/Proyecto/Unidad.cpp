@@ -91,3 +91,9 @@ void Unidad::imprimir() {
     imprimeBarra();
     std::cout << "----------------------------------------" << std::endl;
 }
+
+// Sobrecarga del operador
+std::ostream& operator<<(std::ostream& os, const Unidad& u) {
+    os << "[Nivel " << u.getNivel() << "] Salud: " << u.getSalud() << "/" << u.getVida() << " | Atk: " << u.getAtaque();
+    return os;
+}

@@ -15,5 +15,6 @@ public:
     int calculaAtaque(Unidad& objetivo) override;
     void recibeAtaque(int ptosAtaque) override;
     void imprimir() override;
+    void revive() override; // Declaración de método virtual puro
 };
 #endif
