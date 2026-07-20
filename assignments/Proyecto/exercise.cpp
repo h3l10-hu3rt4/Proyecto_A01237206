@@ -22,7 +22,7 @@ int main() {
         combatientes[i]->imprimir();
     }
 
-    // 3. Ciclo FOR para hacerlos pelear en cadena
+    // 3. Ciclo FOR para hacerlos pelear
     std::cout << "\n--- INICIA EL COMBATE EN CADENA ---\n";
     for (int i = 0; i < combatientes.size() - 1; i++) {
         std::cout << "\n>>> Ronda " << i + 1 << " <<<\n";
@@ -31,19 +31,19 @@ int main() {
         combatientes[i+1]->imprimir();
     }
 
-    // 4. Probar la sobrecarga del operador << y forzar el revive()
+    // 4. Probar la sobrecarga del operador y forzar el revive()
     std::cout << "\n--- PRUEBA DE SOBRECARGA Y RESURRECCION ---\n";
     
     // Imprimiendo con el operador sobrecargado usando el valor apuntado (*)
     std::cout << "Estado rapido del Mago: " << *combatientes[2] << "\n";
     
     std::cout << "\nUn meteoro gigante cae sobre el Mago!\n";
-    // Le quitamos 500 de salud de golpe para forzar que llegue a 0 y se ejecute su revive()
+    // Menos 500 de salud para forzar que llegue a 0 y se ejecute su revive()
     combatientes[2]->recibeAtaque(500); 
     
     std::cout << "\nEstado final del Mago: " << *combatientes[2] << "\n";
 
-    // 5. Liberar la memoria dinámica para evitar fugas (Memory Leaks)
+    // 5. Liberar la memoria dinámica
     for (int i = 0; i < combatientes.size(); i++) {
         delete combatientes[i];
     }
